@@ -1,0 +1,73 @@
+{
+    "services": [
+      {
+        "model": "viam-labs:vision:yolov8",
+        "attributes": {
+          "model_location": "/home/pi/yolov8n-hard-hat-model.pt"
+        },
+        "name": "hard-hat",
+        "type": "vision",
+        "namespace": "rdk"
+      }
+    ],
+    "modules": [
+      {
+        "type": "registry",
+        "name": "viam_realsense",
+        "module_id": "viam:realsense",
+        "version": "0.0.8"
+      },
+      {
+        "version": "0.0.1",
+        "type": "registry",
+        "name": "viam-labs_YOLOv8",
+        "module_id": "viam-labs:YOLOv8"
+      },
+      {
+        "type": "registry",
+        "name": "felixreichenbach_object-filter",
+        "module_id": "felixreichenbach:object-filter",
+        "version": "0.6.0"
+      }
+    ],
+    "components": [
+      {
+        "type": "camera",
+        "namespace": "rdk",
+        "attributes": {
+          "width_px": 640,
+          "height_px": 480,
+          "little_endian_depth": false,
+          "sensors": [
+            "color",
+            "depth"
+          ]
+        },
+        "depends_on": [],
+        "name": "intel-realsense-cam",
+        "model": "viam:camera:realsense"
+      },
+      {
+        "name": "objectfilter-cam",
+        "model": "felixreichenbach:camera:objectfilter",
+        "type": "camera",
+        "namespace": "rdk",
+        "attributes": {
+          "filter_data": true,
+          "camera": "intel-realsense-cam",
+          "vision_services": [
+            "hard-hat"
+          ],
+          "labels": [
+            "Hardhat",
+            "NO-Hardhat"
+          ],
+          "confidence": 0.5,
+          "display_boxes": true
+        },
+        "depends_on": [
+          "intel-realsense-cam"
+        ]
+      }
+    ]
+  }

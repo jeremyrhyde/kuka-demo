@@ -1,0 +1,40 @@
+{
+    "components": [
+      {
+        "namespace": "rdk",
+        "attributes": {
+          "sensors": [
+            "color",
+            "depth"
+          ],
+          "width_px": 640,
+          "height_px": 480,
+          "little_endian_depth": false
+        },
+        "depends_on": [],
+        "name": "intel-realsense-cam",
+        "model": "viam:camera:realsense",
+        "type": "camera"
+      },
+      {
+        "model": "join_color_depth",
+        "type": "camera",
+        "namespace": "rdk",
+        "attributes": {
+          "depth_camera_name": "intel-realsense-cam",
+          "output_image_type": "color",
+          "color_camera_name": "intel-realsense-cam"
+        },
+        "depends_on": [],
+        "name": "pointcloud_cam"
+      }
+    ],
+    "modules": [
+      {
+        "version": "0.0.8",
+        "type": "registry",
+        "name": "viam_realsense",
+        "module_id": "viam:realsense"
+      }
+    ]
+  }

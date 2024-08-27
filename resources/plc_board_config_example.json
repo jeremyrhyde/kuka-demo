@@ -1,0 +1,68 @@
+{
+    "modules": [
+      {
+        "type": "local",
+        "name": "modbus",
+        "executable_path": "/Users/jeremyhyde/Development/viam-modbus/bin/viam-modbus"
+      }
+    ],
+    "components": [
+      {
+        "attributes": {
+          "gpio_pins": [
+            {
+              "offset": 0,
+              "pin_type": "output",
+              "name": "DO_01"
+            },
+            {
+              "name": "DO_02",
+              "offset": 1,
+              "pin_type": "output"
+            },
+            {
+              "pin_type": "output",
+              "name": "DO_03",
+              "offset": 2
+            },
+            {
+              "offset": 3,
+              "pin_type": "output",
+              "name": "DO_04"
+            },
+            {
+              "offset": 4,
+              "pin_type": "input",
+              "name": "DI_01"
+            },
+            {
+              "name": "DI_02",
+              "offset": 5,
+              "pin_type": "input"
+            },
+            {
+              "pin_type": "input",
+              "name": "DI_03",
+              "offset": 6
+            },
+            {
+              "name": "DI_04",
+              "offset": 7,
+              "pin_type": "input"
+            }
+          ],
+          "modbus": {
+            "timeout_ms": 10000,
+            "url": "tcp://10.1.12.124:502",
+            "word_order": "low",
+            "endianness": "big"
+          }
+        },
+        "depends_on": [],
+        "model": "viam-soleng:board:modbus-tcp",
+        "name": "PLCBoard",
+        "namespace": "rdk",
+        "type": "board"
+      }
+    ]
+  }

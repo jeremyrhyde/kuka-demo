@@ -1,0 +1,20 @@
+{
+    "modules": [
+      {
+        "version": "0.0.2",
+        "type": "registry",
+        "name": "kuka-module",
+        "module_id": "viam-soleng:arm:viam-kuka"
+      }
+    ],
+    "components": [
+      {
+        "namespace": "rdk",
+        "type": "arm",
+        "attributes": {},
+        "depends_on": [],
+        "model": "sol-eng:arm:kuka",
+        "name": "kuka-arm"
+      }
+    ]
+  }
